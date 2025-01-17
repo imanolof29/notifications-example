@@ -1,5 +1,6 @@
 package com.imanolortiz.auth.service.impl;
 
+import com.imanolortiz.auth.commons.TopicConstants;
 import com.imanolortiz.auth.commons.dtos.AuthResponseDto;
 import com.imanolortiz.auth.commons.dtos.LoginRequestDto;
 import com.imanolortiz.auth.commons.dtos.UserRequest;
@@ -21,10 +22,13 @@ public class AuthServiceImpl implements AuthService {
 
     private final PasswordEncoder passwordEncoder;
 
-    public AuthServiceImpl(UserRepository userRepository, JwtService jwtService, PasswordEncoder passwordEncoder){
+    private final StreamBridge streamBridge;
+
+    public AuthServiceImpl(UserRepository userRepository, JwtService jwtService, PasswordEncoder passwordEncoder, StreamBridge streamBridge){
         this.userRepository = userRepository;
         this.jwtService = jwtService;
         this.passwordEncoder = passwordEncoder;
+        this.streamBridge = streamBridge;
     }
 
     @Override
@@ -55,5 +59,10 @@ public class AuthServiceImpl implements AuthService {
                 .role("USER")
                 .build();
     }
+
+    private String sendNotificationEvent(){
+        this.streamBridge.send(TopicConstants.USER_LOGGED_IN_TOPIC);
+    }
+
 }
 

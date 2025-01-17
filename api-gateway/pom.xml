@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.imanolortiz</groupId>
-	<artifactId>notification-example</artifactId>
+	<artifactId>api-gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>notification-example</name>
-	<description>Notification app example</description>
+	<name>api-gateway</name>
+	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -26,15 +26,6 @@
 		<tag/>
 		<url/>
 	</scm>
-
-	<modules>
-		<module>auth</module>
-		<module>users</module>
-		<module>eligibility-microservice</module>
-		<module>api-gateway</module>
-		<module>notifications-microservice</module>
-	</modules>
-
 	<properties>
 		<java.version>17</java.version>
 	</properties>
